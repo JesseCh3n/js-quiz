@@ -81,7 +81,6 @@ let record = {
     score: ''
 };
 
-
 function game(index) {
     query_text.innerHTML = '';
     option_list.innerHTML = '';
@@ -135,10 +134,15 @@ function setTime() {
             record.initial = person;
             record.score = win.textContent;
             console.log(record);
-            const localRecord = JSON.parse(localStorage.getItem("storedRecord"));
+            localRecord = JSON.parse(localStorage.getItem("storedRecord"));
             console.log(localRecord);
-            localArray.push(localRecord);
+            localArray = localRecord;
             localArray.push(record);
+
+            if (localArray[0] == null) {
+                localArray.slice(1);
+            }
+            
             localStorage.setItem("storedRecord", JSON.stringify(localArray));
             alert("Press 'Reset' button to play again.");
         } 

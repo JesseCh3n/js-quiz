@@ -13,7 +13,7 @@ function renderRecords() {
     let record = records[i];
 
     let li = document.createElement("li");
-    li.textContent = record.initial + " has scored " + record.score + '.';
+    li.textContent = record.initial + " scores " + record.score + '.';
     li.setAttribute("data-index", i);
 
     recordList.appendChild(li);

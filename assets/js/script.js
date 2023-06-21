@@ -69,7 +69,7 @@ const lose = document.querySelector('.incorrect');
 const query_text = document.querySelector(".query_text");
 const option_list = document.querySelector(".option_list");
 
-let time = 100;
+let time = 0;
 let index = 0;
 let correct = 0;
 let incorrect = 0;
@@ -129,6 +129,8 @@ function setTime() {
         timer.textContent = time;
         if(time == 0 || time < 0) {
             clearInterval(timerInterval);
+            button.disabled = true;
+            console.log(button);
             timer.textContent = 0;
             let person = prompt("Please enter your initials.");
             record.initial = person;
@@ -153,6 +155,7 @@ function setTime() {
 button.addEventListener("click", function(event) {
     const element = event.target;
     if (element.matches("button") === true) {
+        time = 100;
         setTime()
         game(index);
     }
@@ -162,6 +165,8 @@ button.addEventListener("click", function(event) {
 reset.addEventListener("click", function(event) {
     const element = event.target;
     if (element.matches("button") === true) {
+        button.disabled = false;
+        console.log(button);
         window.location.reload();
     }
 });

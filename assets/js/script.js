@@ -38,8 +38,8 @@ let questions = [
     {
         num: 7,
         question: "What is 'this' within an Oject?",
-        answer: "The Oject",
-        options:["The JavaScript", "The browser", "The Oject", "A variable"]
+        answer: "The Object",
+        options:["The JavaScript", "The browser", "The Object", "A variable"]
     },
     {
         num: 8,
@@ -49,7 +49,7 @@ let questions = [
     },
     {
         num: 9,
-        question: "Which window command allow user input?",
+        question: "Which window command allows user input?",
         answer: "prompt",
         options:["prompt", "confirm", "message", "alert"]
     },
@@ -73,7 +73,7 @@ let time = 0;
 let index = 0;
 let correct = 0;
 let incorrect = 0;
-let penalty = 15;
+const penalty = 15;
 let localArray = [];
 
 let record = {
@@ -127,6 +127,8 @@ function setTime() {
     var timerInterval = setInterval(function() {
         time--;
         timer.textContent = time;
+
+        /* clear time and store records in local storage. */
         if(time == 0 || time < 0) {
             clearInterval(timerInterval);
             button.disabled = true;
@@ -138,13 +140,16 @@ function setTime() {
             console.log(record);
             localRecord = JSON.parse(localStorage.getItem("storedRecord"));
             console.log(localRecord);
-            localArray = localRecord;
-            localArray.push(record);
 
-            if (localArray[0] == null) {
-                localArray.slice(1);
+            if (localRecord == null) {
+                localArray = [record];
+            } else {
+                localArray = localRecord;
+                localArray.push(record);
             }
-            
+
+            console.log(localArray);
+
             localStorage.setItem("storedRecord", JSON.stringify(localArray));
             alert("Press 'Reset' button to play again.");
         } 

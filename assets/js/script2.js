@@ -7,8 +7,8 @@ function renderRecords() {
 
   /*recordList.innerHTML = "";*/
   recordCountSpan.textContent = records.length;
-  console.log (recordCountSpan);
-  console.log (records.length);
+  /*console.log (recordCountSpan);
+  console.log (records.length);*/
   for (var i = 0; i < records.length; i++) {
     let record = records[i];
 
@@ -24,12 +24,9 @@ function init() {
   const localRecord = JSON.parse(localStorage.getItem("storedRecord"));
   if (localRecord !== null) {
     records = localRecord;
-    console.log(records);
-    console.log(records.length);
 
   }
   renderRecords();
-  console.log(renderRecords);
 }
 
 init();

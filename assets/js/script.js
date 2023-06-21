@@ -37,7 +37,7 @@ let questions = [
     },
     {
         num: 7,
-        question: "What is 'this' within an Oject?",
+        question: "What is 'this' within an Object?",
         answer: "The Object",
         options:["The JavaScript", "The browser", "The Object", "A variable"]
     },
@@ -49,7 +49,7 @@ let questions = [
     },
     {
         num: 9,
-        question: "Which window command allows user input?",
+        question: "Which windows command allows user input?",
         answer: "prompt",
         options:["prompt", "confirm", "message", "alert"]
     },
@@ -99,8 +99,8 @@ function game(index) {
     option_list.addEventListener("click", function(event) {
         userAns = event.target.textContent;
         correctAns = questions[index].answer;
-        console.log(userAns);
-        console.log(correctAns);
+        /*console.log(userAns);
+        console.log(correctAns);*/
         if((userAns === correctAns) && (userAns != null) && (correctAns != null)) {
             correct ++;
             win.innerHTML = correct;
@@ -132,14 +132,14 @@ function setTime() {
         if(time == 0 || time < 0) {
             clearInterval(timerInterval);
             button.disabled = true;
-            console.log(button);
+            /*console.log(button);*/
             timer.textContent = 0;
             let person = prompt("Please enter your initials.");
             record.initial = person;
             record.score = win.textContent;
-            console.log(record);
+            /*console.log(record);*/
             localRecord = JSON.parse(localStorage.getItem("storedRecord"));
-            console.log(localRecord);
+            /*console.log(localRecord);*/
 
             if (localRecord == null) {
                 localArray = [record];
@@ -147,8 +147,7 @@ function setTime() {
                 localArray = localRecord;
                 localArray.push(record);
             }
-
-            console.log(localArray);
+            /*console.log(localArray);*/
 
             localStorage.setItem("storedRecord", JSON.stringify(localArray));
             alert("Press 'Reset' button to play again.");
@@ -171,7 +170,6 @@ reset.addEventListener("click", function(event) {
     const element = event.target;
     if (element.matches("button") === true) {
         button.disabled = false;
-        console.log(button);
         window.location.reload();
     }
 });
